@@ -1,22 +1,37 @@
-from data import load_data
-from model import build_model
-from predict import show_predictions, test_prediction
+import torch
+import torch.optim as optim
+import torch.nn as nn
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
 
+from model import SimpleNN
+from train import train_model
+from test import evaluate_model, show_predictions
+from utils import save_model, load_model
 
-if __name__ == "__main__":
-    (x_train, y_train), (x_test, y_test) = load_data()
-    model = build_model()
+# Przygotowanie danych
+transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize((0.5,), (0.5,))
+])
 
-    print("\n--- Trenowanie modelu ---")
-    model.fit(x_train, y_train, epochs=5, batch_size=32)
+train_dataset = datasets.MNIST(root="./data", train=True, download=True, transform=transform)
+test_dataset = datasets.MNIST(root="./data", train=False, download=True, transform=transform)
 
-    print("\n--- Ewaluacja ---")
-    test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
-    print(f"Dokładność na zbiorze testowym: {test_acc:.4f}")
+train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
+test_loader = DataLoader(test_dataset, batch_size=1000)
 
-    print("\n--- Przykładowe predykcje ---")
-    show_predictions(model, x_test, y_test)
+# Inicjalizacja modelu
+model = SimpleNN()
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-    print("\n--- Test jednostkowy ---")
-    test_prediction(model, x_test[0])
-    print("Test jednostkowy OK.")
+# Trening
+train_model(model, train_loader, criterion, optimizer, epochs=5)
+
+# Zapis modelu
+save_model(model)
+
+# Ewaluacja
+evaluate_model(model, test_loader)
+show_predictions(model, test_loader)
