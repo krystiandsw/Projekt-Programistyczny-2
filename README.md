@@ -7,8 +7,8 @@ Ten projekt to prosty klasyfikator obrazów ręcznie pisanych cyfr z wykorzystan
 
 ### 1. Sklonuj repozytorium
 ```
-git clone <adres-twojego-repozytorium>
-cd <folder-repozytorium>
+git clone https://github.com/krystiandsw/Projekt-Programistyczny-2
+cd Projekt-Programistyczny-2
 ```
 
 ### 2. Zainstaluj zależności
