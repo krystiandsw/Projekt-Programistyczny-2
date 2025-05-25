@@ -38,4 +38,4 @@ To spowoduje:
 - `data/` – Pliki zbioru danych MNIST
 
 ## Podsumowanie
-Ten projekt dostarcza minimalny, ale kompletny przykład klasyfikacji obrazów z użyciem PyTorch. Jest odpowiedni dla początkujących, którzy chcą zrozumieć podstawy przepływu pracy w głębokim uczeniu, w tym ładowanie danych, trenowanie modelu, ewaluację i jego utrwalanie. Wszelkie wkłady i ulepszenia są mile widziane!
+Ten projekt dostarcza minimalny, ale kompletny przykład klasyfikacji obrazów z użyciem PyTorch. Jest odpowiedni dla początkujących, którzy chcą zrozumieć podstawy przepływu pracy w głębokim uczeniu, w tym ładowanie danych, trenowanie modelu, ewaluację i jego utrwalanie.
