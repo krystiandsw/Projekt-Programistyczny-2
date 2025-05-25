@@ -29,10 +29,23 @@ To spowoduje:
 - Ewaluację modelu na zbiorze testowym
 - Wyświetlenie przykładowych przewidywań
 
+## Jak przetestować model (unit test)
+
+Aby uruchomić test jednostkowy sprawdzający poprawność działania modelu:
+
+1. Upewnij się, że masz zainstalowane wymagane biblioteki (`torch`).
+2. W terminalu, w katalogu projektu, uruchom:
+
+```
+python test.py
+```
+
+Jeśli test zakończy się powodzeniem, zobaczysz komunikat `OK`. W przeciwnym razie zostanie wyświetlony opis błędu.
+
 ## Struktura projektu
 - `main.py` – Główny punkt wejścia: trenuje, zapisuje i ocenia model
 - `train.py` – Zawiera pętlę treningową
-- `test.py` – Zawiera funkcje ewaluacji i wyświetlania przewidywań
+- `test.py` – Zawiera funkcje ewaluacji, wyświetlania przewidywań oraz test jednostkowy sprawdzający poprawność działania modelu
 - `model.py` – Definiuje architekturę sieci neuronowej
 - `utils.py` – Funkcje pomocnicze do zapisywania/ładowania modeli
 - `data/` – Pliki zbioru danych MNIST
